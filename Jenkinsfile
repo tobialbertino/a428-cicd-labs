@@ -6,7 +6,9 @@ node {
     }
   }
   stage('Build') {
-    sh 'npm install'
+    docker.image('node:lts-bullseye-slim').inside {
+            sh 'npm i'
+        }
   }
   stage('Test') {
     steps {
